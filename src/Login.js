@@ -2,13 +2,7 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Link, useNavigate } from 'react-router-dom';
 
 const Login = () => {
-    const mysql = require('kvmairlines');
-    const db = mysql.createConnection({
-        user: “root”,
-        host: “localhost”,
-        password: “add-password”,
-        database: “loginsystem”,
-     });
+
   const [loggedIn, setLoggedIn] = useState(false);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
