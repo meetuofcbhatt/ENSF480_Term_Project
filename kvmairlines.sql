@@ -9,43 +9,90 @@ CREATE TABLE USERS (
 	userid		int,
     email		varchar(25),
 	address 	varchar(25),
-    type_user		varchar(25),
 	primary key (userid)
 );
 
-DROP TABLE IF EXISTS ACCOUNT;
-CREATE TABLE ACCOUNT (
+DROP TABLE IF EXISTS REG_USERS;
+CREATE TABLE REG_USERS (
 	username	varchar(25),
-	password_u	varchar(25),
-	userid		int,
+	password	varchar(25),
+	registerid		int,
+    email		varchar(25),
+	address 	varchar(25),
+    notifications		varchar(25),
 	primary key (userid)
 );
-INSERT INTO ACCOUNT (AnimalID, AnimalNickname, AnimalSpecies) VALUES
-('kenzy', 'kenzy', 1);
 
 
 
+DROP TABLE IF EXISTS AGENTS;
+CREATE TABLE AGENTS (
+	firstname	varchar(25),
+	lastname	varchar(25),
+	agentid		int,
+	companyname varchar(25),
+	primary key (userid)
+);
 
-
+DROP TABLE IF EXISTS ADMIN;
+CREATE TABLE ADMIN (
+	username	varchar(25),
+	password	varchar(25),
+	adminid		int,
+	primary key (userid)
+);
 
 
 DROP TABLE IF EXISTS CREW;
 CREATE TABLE CREW (
-	firstname	varchar(25),
-	lastname	varchar(25),
 	crewID		int,
-    type_crew	varchar(25),
+    crewnum	varchar(25),
+	primary key (crewID)
+);
+
+
+DROP TABLE IF EXISTS STAFF;
+CREATE TABLE STAFF (
+	staffID		int,
+    crewID		int,
+	name varchar(25),
+	stafftype varchar(25),
+	primary key (crewID)
+);
+
+DROP TABLE IF EXISTS FLIGHTS;
+CREATE TABLE FLIGHTS (
+	FlightID	int not null AUTO_INCREMENT,
+    destination		varchar(25),
+    origin	varchar(25),
+    date_leaves	varchar(25),
+    aircraft	varchar(25),
+	crewID		varchar(25),
+	primary key (FlightID)
+
+);
+
+
+DROP TABLE IF EXISTS BOOKING;
+CREATE TABLE BOOKING (
+	staffID		int,
+    crewID		int,
+	name varchar(25),
+	stafftype varchar(25),
 	primary key (crewID)
 );
 
 
 
-DROP TABLE IF EXISTS STAFF;
-CREATE TABLE STAFF (
-	flightID	varchar(25),
-	crewID		int,
-	primary key (flightID)
-);
+
+
+
+
+
+
+
+
+
 
 
 DROP TABLE IF EXISTS AIRCRAFT;
@@ -60,13 +107,3 @@ CREATE TABLE AIRCRAFT (
 
 
 
-DROP TABLE IF EXISTS FLIGHTS;
-CREATE TABLE FLIGHTS (
-	FlightID	int not null AUTO_INCREMENT,
-    destination		varchar(25),
-    origin	varchar(25),
-    date_leaves	varchar(25),
-    aircraft	varchar(25),
-	primary key (FlightID)
-
-);
