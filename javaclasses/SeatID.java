@@ -1,4 +1,4 @@
-package ensf480final;
+package javaclasses;
 
 public class SeatID {
 	int row;
