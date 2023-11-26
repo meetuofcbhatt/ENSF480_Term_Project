@@ -1,5 +1,5 @@
 package javaclasses;
 
-public class Booking {
+public class Bookings {
     
 }

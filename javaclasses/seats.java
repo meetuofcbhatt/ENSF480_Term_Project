@@ -1,6 +1,6 @@
 package javaclasses;
 
-public class seat {
+public class seats {
     private int row;
     private char column; 
     private int aircraftID;

@@ -1,6 +1,6 @@
 package javaclasses;
 
-public class Flight {
+public class Flights {
 
     private int flightID;
     public String  destination;
@@ -12,7 +12,7 @@ public class Flight {
     public String aircraft;
 
 
-       public Flight(int flightID, String  destination, String  origin, String  flightName, int date, int crewID, int aircraftID, String aircraft) {
+       public Flights(int flightID, String  destination, String  origin, String  flightName, int date, int crewID, int aircraftID, String aircraft) {
 
         /**
          * This is the Task constructor that creates a task object based on the parameters passed into the constructor
