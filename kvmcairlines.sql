@@ -4,13 +4,15 @@ USE KVMCAIRLINES;
 
 DROP TABLE IF EXISTS USERS;
 CREATE TABLE USERS (
-	firstname	varchar(25),
+	userid		int not null AUTO_INCREMENT,
+    firstname	varchar(25),
 	lastname	varchar(25),
-	userid		int,
     email		varchar(25),
 	address 	varchar(25),
 	primary key (userid)
 );
+
+
 
 DROP TABLE IF EXISTS REG_USERS;
 CREATE TABLE REG_USERS (
@@ -36,32 +38,51 @@ CREATE TABLE AGENTS (
 	primary key (userid)
 );
 
+#needs to add through the "login" interface
+
 DROP TABLE IF EXISTS ADMINS;
 CREATE TABLE ADMINS (
-	userid		int,
-	username	varchar(25),
+	adminID		int,
+    username	varchar(25),
 	pass		varchar(25),
-	adminid		int,
-	primary key (userid)
+	primary key (adminid)
 );
 
+INSERT INTO ADMINS(adminID, username, pass) VALUES
+(0, "kenzy", "Kvmc#kenzy"),
+(1, "vera", "kVmc#vera"),
+(2, "meet", "kvMc#meet"),
+(3, "chris", "kvmC#chris");
 
-DROP TABLE IF EXISTS CREW;
-CREATE TABLE CREW (
-	crewID		int,
-    crewnum		varchar(25),
+DROP TABLE IF EXISTS CREWS;
+CREATE TABLE CREWS (
+	crewID		int not null AUTO_INCREMENT,
+    crewNum		int,
 	primary key (crewID)
 );
+#should increment the crew number on its own, as it addes more crew to the database.
+INSERT INTO CREWS(crewNum) VALUES
+(1),
+(2),
+(3);
 
-
-DROP TABLE IF EXISTS STAFF;
-CREATE TABLE STAFF (
-	staffID		int,
+DROP TABLE IF EXISTS STAFFS;
+CREATE TABLE STAFFS (
+	staffID		int not null AUTO_INCREMENT,
     crewID		int,
-	firstName varchar(25),
-	stafftype varchar(25),
+	firstName 	varchar(25),
+    lastName 	varchar(25),
+	stafftype varchar(1),#A: attendant, P: pilot.
 	primary key (staffID)
 );
+
+INSERT INTO STAFFS(crewID, firstName, lastName, stafftype) VALUES
+(0, "John", "Smith", "P"),
+(0, "Tyrion", "Dutch", "A"),
+(1, "Kate", "Jackson", "P"),
+(1, "Rebecca", "Scott", "A"),
+(2, "Stacey", "Miller", "P"),
+(2, "Bob", "Turner", "A");
 
 DROP TABLE IF EXISTS FLIGHTS;
 CREATE TABLE FLIGHTS (
@@ -86,15 +107,17 @@ INSERT INTO FLIGHTS(flightName, destination, origin, date_leaves, aircraftID, cr
 
 DROP TABLE IF EXISTS BOOKING;
 CREATE TABLE BOOKING (
-	userid			int,
-	flightid		int,
-	seatid 			int,
-	primary key (seatid, userid)
+	userID			int,
+	flightID		int,
+	seatID 			int,
+	primary key (seatID, userID)
 );
+
+#program starts with empty BOOKING table. Needs to add through the Booking interface. 
 
 DROP TABLE IF EXISTS SEATS;
 CREATE TABLE SEATS(
-	seatid 			int not null AUTO_INCREMENT,
+	seatID 			int not null AUTO_INCREMENT,
     aircraftID		int,
     columnLetter	varchar(1),
     rowNumber		int,
@@ -139,16 +162,16 @@ INSERT INTO SEATS(aircraftID, columnLetter, rowNumber, seatStatus, seatType) VAL
 
 DROP TABLE IF EXISTS AIRCRAFTS;
 CREATE TABLE AIRCRAFTS (
-	aircraftID		int not null AUTO_INCREMENT,
+	aircraftID		int,
     model			varchar(25),
 	primary key (aircraftID)
 
 );
-
-INSERT INTO AIRCRAFTS(model) VALUES
-("Boeing 787"),
-("Boeing 777"),
-("Boeing B747");
+#Our interface will have to assign an int ID for aircraft depending on the number of aircrafts in the database.
+INSERT INTO AIRCRAFTS(aircraftID, model) VALUES
+(0, "Boeing 787"),
+(1, "Boeing 777"),
+(2, "Boeing B747");
 
 
 
