@@ -14,11 +14,10 @@ public class App {
         Statement st = con.createStatement();
 
 
-        String query = "select * from STAFFS;";
+        String query = "select * from FLIGHTS;";
         ResultSet rs = st.executeQuery(query);
         while(rs.next()){
-            System.out.println("crewID: " + rs.getInt("crewID") + " firstName: " + rs.getString("firstName") +
-                    " lastName: " + rs.getString("lastName") + " stafftype: " + rs.getString("stafftype"));
+            System.out.println("crewID: " + rs.getString("date_leaves"));
         }
         st.close();
         con.close();
