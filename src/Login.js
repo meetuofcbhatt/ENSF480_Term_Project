@@ -19,11 +19,13 @@ const Login = () => {
     // For simplicity, let's just log the username and password for now
     console.log('Username:', username);
     console.log('Password:', password);
+    setLoggedIn(!loggedIn);
   };
 
   const navigate = useNavigate();
   const handleClick = () => {
-    navigate(`/`);}
+    setLoggedIn(!loggedIn);
+    navigate(`/WelcomePage`);}
 
 
   return (

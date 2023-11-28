@@ -2,8 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import FrontPage from './FrontPage';
+
 import Login from './Login';
+import WelcomePage from './WelcomePage';
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
@@ -11,12 +12,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 <BrowserRouter>
     <Routes>
-        <Route exact path="/"element={<FrontPage/>} />
-        <Route path="/user" element={<Login/>} />
-        <Route path="/tourismAgent" element={<Login/>} />
-        <Route path="/airlineAgent"element={<Login/>} />
-        <Route path="/flightAttendant" element={<Login/>} />
-        <Route path="/systemAdmin" element={<Login/>} />
+        <Route exact path="/WelcomePage"element={<WelcomePage/>} />
+        <Route exact path="/"element={<Login/>} />
+
 
     </Routes>
  </BrowserRouter>

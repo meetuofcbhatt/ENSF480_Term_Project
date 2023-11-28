@@ -1,23 +1,44 @@
-import { NavLink } from "react-router-dom";
+import './WelcomePage.css';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Link, useNavigate } from 'react-router-dom';
+import FlightUpdate from './FlightUpdate';
 
-const trimDescription = (description, maxLength = max) => {
-    return description.length > maxLength
-      ? `${description.substring(0, maxLength)}...`
-      : description;
+
+
+
+
+
+function WelcomePage() {
+  const [profile, setProfile] = useState(null);
+  const logOut = () => {
+    setProfile(null);
+  
+  }
+  const navigate = useNavigate();
+  const login = () => {
+    setProfile(null);
+      navigate(`/`);
+  
   };
 
-function WelcomePage({ note, index }) {
-  return (
-    <li className="note-item" key={`note-item-${index}`}>
-      <NavLink to={`/notes/${index + 1}`}>
-        <h3 className="note-title">{note.title}</h3>
-        <FormattedDate date={note.when} />
-        <p
-          className="note-description"
-          dangerouslySetInnerHTML={{ __html: trimDescription(note.body) }}
-        />
-      </NavLink>
-    </li>
+  return (<>
+    <header>
+        <p>KVMC Airlines</p>
+        {(profile) ? (
+          <>
+            <div >
+              <p id="logout"> {profile.name} <button onClick={logOut}>Log out</button> </p>
+            </div>
+          </>
+        ) :
+        (
+            <div className="buttoncont">
+              <button  id="signinbutton" onClick={() => login()}>Sign in</button>
+            </div>
+        )}
+    </header>
+    <FlightUpdate/>
+          </>
   );
 }
 
