@@ -1,3 +1,3 @@
-interface loginInterface {
+public interface loginInterface {
     void login();//abstrace method.
 }

@@ -45,6 +45,9 @@ public class user {
         return this.address;
     }
 
+    public user(int id){
+        this.userid = id;
+    }
 
     
 }
